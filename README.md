@@ -1,15 +1,9 @@
-# ECE532 RF Calculator Toolkit
-
-Quick-reference for quiz/lab use. All scripts run from `calculators/` with `.venv`.
-
-```bash
-cd ~/Classes/ECE532
-.venv/bin/python calculators/<script>
-```
+# Microwave Design Utilities
+Library and utility scripts for maching networks, stability analysis, and microwave amplifier design.
 
 ---
 
-## Library (`calculators/`)
+## Library (`uwaves-utils/`)
 
 ### `utils.py` — `s_params` class
 
@@ -51,9 +45,9 @@ z2gamma(z, z0=50)      # Z → Γ
 
 ---
 
-## Scripts (`calculators/scripts/`)
+## Scripts (`./scripts/`)
 
-### `amp_summary.py` — Full stability + gain summary
+### `scripts/amp_summary.py` — Full stability + gain summary
 
 Edit S-params at the bottom, run directly. Prints |Δ|, K, μ1/μ2, stability circles, MSG/MAG, and (if UC stable) the simultaneous conjugate match and G_T_max.
 
@@ -68,10 +62,10 @@ Edit S-params at the bottom, run directly. Prints |Δ|, K, μ1/μ2, stability ci
 Auto-detects DB/MA/RI format. Finds the nearest frequency row and prints a full summary (stability, conjugate match, Z_in, Z_out, G_T).
 
 ```bash
-.venv/bin/python calculators/scripts/s2p_query.py <file.s2p> <freq_GHz>
+.venv/bin/python ./scripts/s2p_query.py <file.s2p> <freq_GHz>
 
 # Example
-.venv/bin/python calculators/scripts/s2p_query.py data/measured/SAV_541_2V_30MA.S2P 2.4
+.venv/bin/python ./scripts/s2p_query.py data/measured/SAV_541_2V_30MA.S2P 2.4
 ```
 
 Also importable:
@@ -106,7 +100,7 @@ Matches real Z_s (e.g. 50 Ω) to complex Z_L. Returns up to 4 solutions (2 topol
 - **Topology B** (series at source, shunt at load): requires R_s·G_L ≤ 1
 
 ```bash
-.venv/bin/python calculators/scripts/lmatch.py   # edit Z_s, Z_L, freq_hz
+.venv/bin/python ./scripts/lmatch.py   # edit Z_s, Z_L, freq_hz
 ```
 
 ```python
@@ -125,7 +119,7 @@ print_lmatch(50.0, sp.z_in(gl_opt), 2.4e9)
 Matches Z_L to Z0 via a shunt stub. Always produces two solutions. Outputs stub position `d` and stub length `l` for both short-circuit and open-circuit stubs, in degrees and wavelength fractions.
 
 ```bash
-.venv/bin/python calculators/scripts/stub_match.py   # edit Z_L, Z0, freq_hz
+.venv/bin/python ./scripts/stub_match.py   # edit Z_L, Z0, freq_hz
 ```
 
 ```python
@@ -135,7 +129,7 @@ print_stub_match(25-50j, Z0=50.0, freq_hz=2.4e9)
 
 ---
 
-## Typical Quiz Workflow
+## Usage Example
 
 ```python
 from utils import s_params
