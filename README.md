@@ -3,6 +3,20 @@ Library and utility scripts for maching networks, stability analysis, and microw
 
 ---
 
+## Setup
+Project depends on numpy, if you have it installed:
+```
+$ pip list | grep numpy
+numpy                     2.1.3
+```
+You should be good to go.
+
+You may also use a pyenv:
+```
+python -m .venv
+.venv/bin/python pip install numpy
+```
+
 ## Library (`uwaves-utils/`)
 
 ### `utils.py` — `s_params` class
